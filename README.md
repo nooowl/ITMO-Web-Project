@@ -13,4 +13,4 @@
     ./gradlew server:run
     ```
 
-2. Go to ```127.0.0.1/createMakefile```
+2. Go to ```127.0.0.1:8080/createMakefile```
