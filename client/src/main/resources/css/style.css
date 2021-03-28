@@ -1,0 +1,159 @@
+body {
+    background-color: darkcyan;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Corbel, monospace;
+    margin: 0
+}
+
+.main-body {
+    width: 87%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sticky .title,
+.main {
+    background-color: white;
+    border: black solid 4px;
+
+}
+
+.sticky .title {
+    padding-left: 15px;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+nav,
+.sticky .buttons {
+    margin: 7px 0 7px 0;
+}
+
+.navigate,
+.sticky .buttons {
+    height: auto;
+    background-color: black;
+    padding: 5px 20px;
+    margin: 5px 0;
+}
+
+.navigate li {
+    margin: 3px 25px;
+    display: inline;
+}
+
+.navigate a {
+    color: white;
+    font-size: large;
+    padding: 2px;
+    margin: 5px;
+}
+
+.sticky .button {
+    display: inline-block;
+    margin: 5px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+
+.sticky .button:hover {
+    background: rgba(255, 255, 255, .2);
+}
+
+.sticky .button:active {
+    background: white;
+}
+
+img.delete {
+    height: 10px;
+    float: right;
+    margin: 3px;
+}
+
+.main .creator,
+.main .preview {
+    width: 50%;
+    margin: 13px;
+}
+
+.main .variable .equal select {
+    width: 35px;
+    margin: 0 5px;
+}
+
+.main .variables,
+.main .target,
+textarea#preview {
+    border: 2px solid #008b8b;
+    border-radius: 1px;
+}
+
+.main .variables,
+.main .target {
+    margin: 15px 0;
+    padding: 15px;
+}
+
+.main,
+.main .variables .variable,
+.main .target .title {
+    display: flex;
+}
+
+.main .main-flex,
+.main .variables .variable .variable-flex,
+.main .target .title .title-flex {
+    flex: 1;
+}
+
+.main .variables .variable .name,
+.main .variables .variable .value,
+.main .target .title .name,
+.main .target .title .dependencies {
+    flex-grow: 10;
+}
+
+.main .variables .variable .name input,
+.main .variables .variable .value input,
+.main .target .title .name input,
+.main .target .title .dependencies input {
+    width: 50%;
+}
+
+.main .variables .variable .equal,
+.main .target .title .colon {
+    flex-grow: 1;
+}
+
+.main .target .body {
+    margin: 15px 0 15px 0;
+    width: 100%;
+}
+
+textarea#preview,
+.main .target .body textarea {
+    max-width: 97%;
+    min-width: 97%;
+}
+
+textarea#preview {
+    padding: 5px 2px;
+    font-family: monospace;
+    height: auto;
+}
