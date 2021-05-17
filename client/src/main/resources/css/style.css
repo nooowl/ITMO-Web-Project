@@ -12,6 +12,13 @@ body {
     margin-right: auto;
 }
 
+.main-description {
+    font-size: larger;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
 a {
     text-decoration: none;
 }
@@ -20,7 +27,6 @@ a {
 .main {
     background-color: white;
     border: black solid 4px;
-
 }
 
 .sticky .title {
@@ -34,12 +40,14 @@ a {
 }
 
 nav,
-.sticky .buttons {
+.sticky .buttons,
+.footer {
     margin: 7px 0 7px 0;
 }
 
 .navigate,
-.sticky .buttons {
+.sticky .buttons,
+.footer {
     height: auto;
     background-color: black;
     padding: 5px 20px;
@@ -51,7 +59,8 @@ nav,
     display: inline;
 }
 
-.navigate a {
+.navigate a,
+.footer p {
     color: white;
     font-size: large;
     padding: 2px;
@@ -99,12 +108,22 @@ img.delete {
 
 .main .variables,
 .main .target,
+.main .defines,
+.main .fields,
+.main .extra-fields,
+.main .extra-sections,
+.main .sections,
 textarea#preview {
     border: 2px solid #008b8b;
     border-radius: 1px;
 }
 
 .main .variables,
+.main .fields,
+.main .defines,
+.main .extra-fields,
+.main .extra-sections,
+.main .sections,
 .main .target {
     margin: 15px 0;
     padding: 15px;
@@ -112,18 +131,36 @@ textarea#preview {
 
 .main,
 .main .variables .variable,
+.main .fields .field,
+.main .defines .define,
+.main .extra-fields .field,
+.main .extra-sections .title,
+.main .sections .title,
 .main .target .title {
     display: flex;
 }
 
 .main .main-flex,
 .main .variables .variable .variable-flex,
+.main .fields .field .field-flex,
+.main .extra-fields .field .field-flex,
+.main .extra-sections .title .title-flex,
+.main .sections .title .title-flex,
+.main .defines .define .define-flex,
 .main .target .title .title-flex {
     flex: 1;
 }
 
 .main .variables .variable .name,
 .main .variables .variable .value,
+.main .defines .define .name,
+.main .defines .define .value,
+.main .fields .field .name,
+.main .fields .field .value,
+.main .extra-fields .field .name,
+.main .extra-fields .field .value,
+.main .extra-sections .title .name,
+.main .sections .title .name,
 .main .target .title .name,
 .main .target .title .dependencies {
     flex-grow: 10;
@@ -131,7 +168,15 @@ textarea#preview {
 
 .main .variables .variable .name input,
 .main .variables .variable .value input,
+.main .defines .define .name input,
+.main .defines .define .value input,
+.main .fields .field .name input,
+.main .fields .field .value input,
 .main .target .title .name input,
+.main .extra-fields .field .name input,
+.main .extra-fields .field .value input,
+.main .extra-sections .title .name input,
+.main .sections .title .name input,
 .main .target .title .dependencies input {
     width: 50%;
 }
@@ -141,12 +186,15 @@ textarea#preview {
     flex-grow: 1;
 }
 
+.main .section .body,
+.main .section .body,
 .main .target .body {
     margin: 15px 0 15px 0;
     width: 100%;
 }
 
 textarea#preview,
+.main .section .body textarea,
 .main .target .body textarea {
     max-width: 97%;
     min-width: 97%;

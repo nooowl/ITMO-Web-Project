@@ -11,6 +11,21 @@ val targetsDiv
 val variablesDiv
     get() = document.getElementById("variables") as HTMLDivElement
 
+val definesDiv
+    get() = document.getElementById("defines") as HTMLDivElement
+
+val fieldsDiv
+    get() = document.getElementById("fields") as HTMLDivElement
+
+val sectionsDiv
+    get() = document.getElementById("sections") as HTMLDivElement
+
+val extraFieldsDiv
+    get() = document.getElementById("extra-fields") as HTMLDivElement
+
+val extraSectionsDiv
+    get() = document.getElementById("extra-sections") as HTMLDivElement
+
 val previewTextArea
     get() = document.getElementById("preview") as HTMLTextAreaElement
 
@@ -25,3 +40,15 @@ val addTargetButton
 
 val addVariableButton
     get() = document.getElementById("add-variable-button") as HTMLAnchorElement
+
+val addDefineButton
+    get() = document.getElementById("add-define-button") as HTMLAnchorElement
+
+val addFieldButton
+    get() = document.getElementById("add-field-button") as HTMLAnchorElement
+
+val addSectionButton
+    get() = document.getElementById("add-section-button") as HTMLAnchorElement
+
+val clearAllButton
+    get() = document.getElementById("clear-all") as HTMLAnchorElement

@@ -1,6 +1,6 @@
 package html
 
-import org.w3c.dom.HTMLElement
+import org.w3c.dom.Element
 
 @Suppress("UNCHECKED_CAST")
-fun <T : HTMLElement> HTMLElement.getChildById(id: String): T = this.querySelector("#$id") as T
+fun <T : Element> Element.getChildById(id: String): T = this.querySelector("#$id") as T

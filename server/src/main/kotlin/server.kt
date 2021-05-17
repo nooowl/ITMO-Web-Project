@@ -1,6 +1,7 @@
-import html.pages.dockerfileCreatorPage
+import html.pages.informationPage
 import html.pages.mainPage
 import html.pages.makefileCreatorPage
+import html.pages.specfileCreatorPage
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.gson.*
@@ -14,6 +15,10 @@ import makefile.MakefileData
 import makefile.MakefileValidationException
 import makefile.toMakefileText
 import routing.receiveMakefile
+import routing.receiveSpecfile
+import specfile.SpecfileData
+import specfile.SpecfileValidationException
+import specfile.toSpecfileText
 import java.io.File
 import java.text.DateFormat
 import java.util.*
@@ -40,6 +45,17 @@ suspend inline fun PipelineContext<Unit, ApplicationCall>.respondMakefileOrError
     }
 }
 
+suspend inline fun PipelineContext<Unit, ApplicationCall>.respondSpecfileOrError(
+    crossinline respondAction: suspend PipelineContext<Unit, ApplicationCall>.(SpecfileData.Specfile) -> Unit
+) {
+    try {
+        val specfile = call.receiveSpecfile()
+        this.respondAction(specfile)
+    } catch (mve: SpecfileValidationException) {
+        call.respondText(status = HttpStatusCode.BadRequest) { mve.message ?: "Bad request" }
+    }
+}
+
 @Suppress("Unused")
 fun Application.main() {
     installGson()
@@ -55,9 +71,31 @@ fun Application.main() {
             }
         }
 
-        get("/createDockerfile") {
+        get("/information") {
             call.respondHtml {
-                dockerfileCreatorPage()
+                informationPage()
+            }
+        }
+
+        get("/createSpecfile") {
+            call.respondHtml {
+                specfileCreatorPage()
+            }
+        }
+
+        post("/previewSpecfile") {
+            respondSpecfileOrError { call.respondText { it.toSpecfileText() } }
+        }
+
+        post("/downloadSpecfile") {
+            respondSpecfileOrError {
+                val file = File("Specfile-${random.nextLong()}")
+                    .apply { writeText(it.toSpecfileText()) }
+                try {
+                    call.respondFile(file)
+                } finally {
+                    file.delete()
+                }
             }
         }
 

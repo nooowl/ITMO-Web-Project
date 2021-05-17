@@ -1,4 +1,4 @@
-package makefile
+package collectors
 
 import html.getChildById
 import html.targetsDiv
@@ -9,13 +9,12 @@ import kotlin.js.json
 
 fun collectTargetsToJson(): List<Json> {
     val targetsJson = mutableListOf<Json>()
-    val targets = targetsDiv.getElementsByClassName("target")
-    for (i in 0 until targets.length) {
-        val target = targets[i] as HTMLDivElement
+    val targets = targetsDiv.getElementsByClassName("target").asList()
+    for (target in targets) {
         targetsJson.add(
             json(
                 "name" to target.getChildById<HTMLInputElement>("name").value,
-                "dependencies" to target.getChildById<HTMLInputElement>("dependencies").value,
+                "dependencies" to target.getChildById<HTMLSelectElement>("dependencies").value,
                 "body" to target.getChildById<HTMLTextAreaElement>("body").value
             )
         )
@@ -25,9 +24,8 @@ fun collectTargetsToJson(): List<Json> {
 
 fun collectVariablesToJson(): List<Json> {
     val variablesJson = mutableListOf<Json>()
-    val variables = variablesDiv.getElementsByClassName("variable")
-    for (i in 0 until variables.length) {
-        val variable = variables[i] as HTMLDivElement
+    val variables = variablesDiv.getElementsByClassName("variable").asList()
+    for (variable in variables) {
         variablesJson.add(
             json(
                 "name" to variable.getChildById<HTMLInputElement>("name").value,
